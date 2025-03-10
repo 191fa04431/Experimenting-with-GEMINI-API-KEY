@@ -66,7 +66,20 @@ response = client.models.generate_content(
         max_output_tokens=500,  
         temperature=0.1  
     )  
-)  
+)
+
+2.4. Generate text from text-and-image input:
+
+from PIL import Image
+from google import genai
+
+client = genai.Client(api_key="YOUR_API_KEY")
+
+image = Image.open("/content/IMG-20250309-WA0037.jpg")
+response = client.models.generate_content(
+    model="gemini-2.0-flash",
+    contents=[image, "Tell me what you understand from this picture"])
+print(response.text)
 
 Resources:
 
